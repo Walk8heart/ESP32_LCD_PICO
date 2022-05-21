@@ -1,7 +1,22 @@
 #include "draw_home.h"
 
+/***************************************************************************
+ *                            global   
+***************************************************************************/
 ui_home_t home_page;
 
+/***************************************************************************
+ *                          static function
+ * - static void set_font_pic_color(uint8_t id, bool status) 
+ * 
+***************************************************************************/
+static void set_font_pic_color(uint8_t id, bool status);
+
+
+/***************************************************************************
+ *                              enum 
+ * 
+***************************************************************************/
 enum{
 
     ID_HOME_CONTROL,
@@ -24,6 +39,8 @@ static void event_handler(lv_obj_t* obj, lv_event_t event) {
     uint8_t id = get_event(obj);
 
     if(event == LV_EVENT_PRESSED) {
+        
+        set_font_pic_color(id, true);
 
         switch(id) {
             case ID_HOME_CONTROL: 
@@ -42,6 +59,8 @@ static void event_handler(lv_obj_t* obj, lv_event_t event) {
 
     if((event == LV_EVENT_RELEASED) || (event == LV_EVENT_PRESS_LOST)) {
 
+        set_font_pic_color(id, false);
+        
          switch(id) {
              case ID_HOME_CONTROL: 
 
@@ -129,31 +148,55 @@ void draw_home(void) {
     // lv_label_set_btn( ui.src, home_page.label_control, home_page.btn_control, 0, -40, "Control");
 
     home_page.label_control_pic = lv_label_create(home_page.btn_control, NULL);
-    lv_label_set_text(home_page.label_control_pic, FONT_PIC_BACK);
-    lv_label_set_style(home_page.label_control_pic, LV_LABEL_STYLE_MAIN, &ui.di_font);
+    lv_label_set_text(home_page.label_control_pic, FONT_PIC_CONTROL);
+
+    home_page.label_sculpture_pic = lv_label_create(home_page.btn_sculpture, NULL);
+    lv_label_set_text(home_page.label_sculpture_pic, FONT_PIC_TOOLS);
+
+    home_page.label_tool_pic = lv_label_create(home_page.btn_tool, NULL);
+    lv_label_set_text(home_page.label_tool_pic, FONT_PIC_SCULPTURE);
+
+    lv_label_set_style(home_page.label_control_pic, LV_LABEL_STYLE_MAIN, &ui.di_font_70_70);
+    lv_label_set_style(home_page.label_sculpture_pic, LV_LABEL_STYLE_MAIN, &ui.di_font_70_70);
+    lv_label_set_style(home_page.label_tool_pic, LV_LABEL_STYLE_MAIN, &ui.di_font_70_70);
 
     home_page.label_control = lv_label_create(home_page.btn_control, NULL);
     lv_obj_align(home_page.label_control, home_page.label_control_pic, LV_ALIGN_OUT_BOTTOM_MID, 0, 30);
     lv_label_set_text(home_page.label_control, "Control");
 
-    lv_label_set_btn( ui.src, home_page.label_sculpture, home_page.btn_sculpture, 0, -40, "Sculpture");
-    lv_label_set_btn( ui.src, home_page.label_tool, home_page.btn_tool, 0, -40, "Tool");
+    home_page.label_sculpture = lv_label_create(home_page.btn_sculpture, NULL);
+    lv_obj_align(home_page.label_sculpture, home_page.label_sculpture_pic, LV_ALIGN_OUT_BOTTOM_MID, 0, 30);
+    lv_label_set_text(home_page.label_sculpture, "Sculpture");
+
+    home_page.label_tool = lv_label_create(home_page.btn_tool, NULL);
+    lv_obj_align(home_page.label_tool, home_page.label_tool_pic, LV_ALIGN_OUT_BOTTOM_MID, 0, 30);
+    lv_label_set_text(home_page.label_tool, "Tool");
 }
 
-static void set_font_pic_color(uint8_t id) {
+
+
+/* 
+ *  update font pic color
+ *  status: true:press, false:relase
+
+*/
+static void set_font_pic_color(uint8_t id, bool status) {
 
     switch(id) {
 
         case ID_HOME_CONTROL: 
-
+            if(status) lv_label_set_style(home_page.label_control_pic, LV_LABEL_STYLE_MAIN, &ui.di_font_70_70_pre);
+            else lv_label_set_style(home_page.label_control_pic, LV_LABEL_STYLE_MAIN, &ui.di_font_70_70);
         break;
 
         case ID_HOME_SCULPTRUE:
-
+            if(status) lv_label_set_style(home_page.label_sculpture_pic, LV_LABEL_STYLE_MAIN, &ui.di_font_70_70_pre);
+            else lv_label_set_style(home_page.label_sculpture_pic, LV_LABEL_STYLE_MAIN, &ui.di_font_70_70);
         break;
 
         case ID_HOME_TOOL: 
-
+            if(status) lv_label_set_style(home_page.label_tool_pic, LV_LABEL_STYLE_MAIN, &ui.di_font_70_70_pre);
+            else lv_label_set_style(home_page.label_tool_pic, LV_LABEL_STYLE_MAIN, &ui.di_font_70_70);
         break;
     }
 

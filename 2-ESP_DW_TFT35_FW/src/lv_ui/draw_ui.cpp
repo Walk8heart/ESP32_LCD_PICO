@@ -16,10 +16,13 @@ void ui_init_style(void) {
     ui.src_1_style .body.grad_color = LV_COLOR_MAKE(0x26, 0x26, 0x26);
 	ui.src_1_style .body.main_color = LV_COLOR_MAKE(0x26, 0x26, 0x26);
 
+    lv_style_copy(&ui.di_font_70_70 , &lv_style_scr);
+    ui.di_font_70_70.text.font = &dlc_font_70x70;
+    ui.di_font_70_70.text.color = lv_color_hex(0x4DE585);
 
-    lv_style_copy(&ui.di_font , &lv_style_scr);
-    ui.di_font.text.font = &dlc_font_40x40;
-    ui.di_font.text.color = lv_color_hex(0x4DE585);
+    lv_style_copy(&ui.di_font_70_70_pre , &lv_style_scr);
+    ui.di_font_70_70_pre.text.font = &dlc_font_70x70;
+    ui.di_font_70_70_pre.text.color = lv_color_hex(0x191919);
 }
 
 

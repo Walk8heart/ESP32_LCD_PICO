@@ -30,8 +30,6 @@ void setup() {
     // init test
     // lv_draw_test();
 
-    
-
     // turn on the lcd and finish Init
     tft_backlight_enable();
 }

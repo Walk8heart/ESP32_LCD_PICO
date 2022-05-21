@@ -4,7 +4,7 @@
 
 LV_FONT_DECLARE(dlc32_gb2312);
 LV_FONT_DECLARE(dlc_font_40x40);
-
+LV_FONT_DECLARE(dlc_font_70x70);
 
 
 typedef struct {
@@ -17,7 +17,8 @@ typedef struct {
 
     uint8_t     page_list;     
 
-    lv_style_t di_font;             // 自定义字库类型         
+    lv_style_t di_font_70_70;             // 自定义字库类型         
+    lv_style_t di_font_70_70_pre;             // 自定义字库类型         
 
 }_ui_t;
 extern _ui_t ui;
