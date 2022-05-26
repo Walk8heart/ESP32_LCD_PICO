@@ -114,3 +114,9 @@ void client_write(uint8_t client, const char* text) {
 #endif
     }
 }
+
+void send_cmd(uint8_t client, const char *text) {
+
+    client_write(client, text);
+
+}

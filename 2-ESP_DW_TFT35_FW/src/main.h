@@ -38,9 +38,9 @@
 #include "lv_ui/draw_ui.h"
 #include "lv_ui/draw_logo.h"
 #include "lv_ui/draw_home.h"
+#include "lv_ui/draw_style.h"
+#include "lv_ui/draw_control.h"
 
-
-
-
+#include "control_cmd/motor_ctrl_cmd.h"
 
 #endif

@@ -1,6 +1,7 @@
 #include "main.h"
 
 
+
 void app_task_init(void) {
 
     // 初始化串口， 开启串口任务
@@ -23,6 +24,9 @@ void setup() {
 
     // all task init here
     app_task_init();
+
+    // Register related control functions
+    cmd_ctrl_init();
 
     // disp Board Info
     report_mcu_info();
